@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
                     <div class="panel-heading">Record List</div>
 
@@ -16,6 +16,7 @@
                         <table data-toggle="table" id="record_list" data-search="true" data-pagination="true" data-sort-order="desc">
                             <thead>
                             <tr>
+                                <th data-field="id" data-sortable="true" >ID</th>
                                 <th data-field="case_number" data-sortable="true" >Número de registro</th>
                                 <th data-field="department_name" data-sortable="true">Departamento</th>
                                 <th data-field="city_name"  data-sortable="true">Pueblo</th>
@@ -44,6 +45,19 @@
             $('#record_list').bootstrapTable({
                 data: response,
 
+            });
+
+
+            var $table = $('#record_list');
+            $(function () {
+                $table.on('click-row.bs.table', function (e, row, $element) {
+                    record_id = row.id;
+
+                    var url_dir = "{{ route('storing_edit', ':id') }}";
+                    url_dir = url_dir.replace(':id', record_id);
+                    location.replace(url_dir);
+
+                });
             });
 
             // $('#remove').click(function(){

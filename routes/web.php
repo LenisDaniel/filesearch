@@ -13,33 +13,36 @@
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
-
-    if(!Auth::user())    {
+    if(!Auth::user()) {
         return view('auth/login');
     }
-
 });
 
 Auth::routes();
 
-//Maintenance Insert Routes
-Route::get('/home', 'HomeController@index')->name('home');
+//Maintenance Routes
 Route::get('/', 'HomeController@index');
-Route::post('/departments_insert', 'DepartmentsController@store')->name('departments_insert');
-Route::post('/cities_insert', 'CitiesController@store')->name('cities_insert');
-Route::post('/locations_insert', 'LocationsController@store')->name('locations_insert');
-Route::post('/archives_insert', 'ArchivesController@store')->name('archives_insert');
-Route::post('/boxes_insert', 'BoxesController@store')->name('boxes_insert');
-Route::post('/storing_record', 'StoringsController@store')->name('storing_record');
-
-
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/departments', 'DepartmentsController@index')->name('departments');
+Route::post('/departments_insert', 'DepartmentsController@store')->name('departments_insert');
+
 Route::get('/cities', 'CitiesController@index')->name('cities');
+Route::post('/cities_insert', 'CitiesController@store')->name('cities_insert');
+
 Route::get('/locations', 'LocationsController@index')->name('locations');
+Route::post('/locations_insert', 'LocationsController@store')->name('locations_insert');
+
 Route::get('/archives', 'ArchivesController@index')->name('archives');
+Route::post('/archives_insert', 'ArchivesController@store')->name('archives_insert');
+
 Route::get('/boxes', 'BoxesController@index')->name('boxes');
+Route::post('/boxes_insert', 'BoxesController@store')->name('boxes_insert');
+
+Route::post('/storing_record', 'StoringsController@store')->name('storing_record');
 Route::get('/storing', 'StoringsController@index')->name('storing');
+Route::get('/storing_edit/{id}', 'StoringsController@show')->name('storing_edit');
+Route::post('/storing_update/{id}', 'StoringsController@update')->name('storing_update');
 
 //Ajax
 Route::post('/remove_departments_records', 'DepartmentsController@remove_records')->name('remove_departments_records');

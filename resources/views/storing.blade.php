@@ -5,7 +5,11 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Store Records</div>
+                    @if($process == 1)
+                        <div class="panel-heading">Update Record</div>
+                    @else
+                        <div class="panel-heading">Store Records</div>
+                    @endif
 
                     <div class="panel-body">
                         <div class="flash-message">
@@ -15,20 +19,36 @@
                                 @endif
                             @endforeach
                         </div>
-                        <form class="form-horizontal" method="POST" action="{{ route('storing_record') }}">
+                        @if($process == 1)
+                            <form class="form-horizontal" method="POST" action="{{ route('storing_update', ['id' => $data->id]) }}">
+                        @else
+                            <form class="form-horizontal" method="POST" action="{{ route('storing_record') }}">
+                        @endif
+
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('case_number') ? ' has-error' : '' }}">
                                 <label for="case_number" class="col-md-4 control-label">Case Number</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="case_number" value="{{ old('case_number') }}" autofocus>
+                                    @if($process == 1)
+                                        @php
+                                            $dinamic_word = 'Update';
+                                        @endphp
+                                        <input id="name" type="text" class="form-control" name="case_number" value="{{ $data->case_number }}" autofocus>
+                                    @else
+                                        @php
+                                            $dinamic_word = 'Save';
+                                        @endphp
+                                        <input id="name" type="text" class="form-control" name="case_number" value="{{ old('case_number') }}" autofocus>
+                                    @endif
 
                                     @if ($errors->has('case_number'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('case_number') }}</strong>
                                     </span>
                                     @endif
+
                                 </div>
                             </div>
 
@@ -39,7 +59,12 @@
                                     <select class="form-control" name="department_id">
                                         <option>Select One Category</option>
                                         @foreach($departments as $department)
-                                            <option value="{{$department->id}}">{{$department->department_name}}</option>
+                                            @if($department->id == $dep_id)
+                                                @php ($selected = "selected")
+                                            @else
+                                                @php ($selected = "")
+                                            @endif
+                                            <option value="{{$department->id}}" {{$selected}}>{{$department->department_name}}</option>
                                         @endforeach
                                     </select>
 
@@ -58,7 +83,12 @@
                                     <select class="form-control" name="city_id">
                                         <option>Select One Category</option>
                                         @foreach($cities as $city)
-                                            <option value="{{$city->id}}">{{$city->city_name}}</option>
+                                            @if($city->id == $cit_id)
+                                                @php ($selected = "selected")
+                                            @else
+                                                @php ($selected = "")
+                                            @endif
+                                            <option value="{{$city->id}}" {{$selected}}>{{$city->city_name}}</option>
                                         @endforeach
                                     </select>
 
@@ -77,7 +107,12 @@
                                     <select class="form-control" name="location_id">
                                         <option>Select One Category</option>
                                         @foreach($locations as $location)
-                                            <option value="{{$location->id}}">{{$location->location_name}}</option>
+                                            @if($location->id == $loc_id)
+                                                @php ($selected = "selected")
+                                            @else
+                                                @php ($selected = "")
+                                            @endif
+                                            <option value="{{$location->id}}" {{$selected}}>{{$location->location_name}}</option>
                                         @endforeach
                                     </select>
 
@@ -96,7 +131,12 @@
                                     <select class="form-control" name="archive_id">
                                         <option>Select One Category</option>
                                         @foreach($archives as $archive)
-                                            <option value="{{$archive->id}}">{{$archive->archive_identifier}}</option>
+                                            @if($archive->id == $arc_id)
+                                                @php ($selected = "selected")
+                                            @else
+                                                @php ($selected = "")
+                                            @endif
+                                            <option value="{{$archive->id}}" {{$selected}}>{{$archive->archive_identifier}}</option>
                                         @endforeach
                                     </select>
 
@@ -115,7 +155,12 @@
                                     <select class="form-control" name="box_id">
                                         <option>Select One Category</option>
                                         @foreach($boxes as $box)
-                                            <option value="{{$box->id}}">{{$box->box_identifier}}</option>
+                                            @if($box->id == $box_id)
+                                                @php ($selected = "selected")
+                                            @else
+                                                @php ($selected = "")
+                                            @endif
+                                            <option value="{{$box->id}}" {{$selected}}>{{$box->box_identifier}}</option>
                                         @endforeach
                                     </select>
 
@@ -126,11 +171,14 @@
                                     @endif
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
-                                        Save
+                                        @if($process == 1)
+                                            Update
+                                        @else
+                                            Save
+                                        @endif
                                     </button>
                                     <a href="{{route('home')}}">
                                         <button type="button" class="btn btn-danger">
@@ -139,6 +187,7 @@
                                     </a>
                                 </div>
                             </div>
+
                         </form>
                     </div>
                 </div>

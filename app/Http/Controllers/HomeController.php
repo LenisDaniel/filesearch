@@ -35,4 +35,7 @@ class HomeController extends Controller
         ///return view('/sellbook', ['data' => $data]);
 
     }
+
+
+
 }
