@@ -15,7 +15,7 @@ class Storing extends Migration
     {
         Schema::create('storings', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('case_number');
+            $table->string('case_number', 15);
             $table->integer('department_id')->unsigned();
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
             $table->integer('cities_id')->unsigned();

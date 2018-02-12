@@ -10,7 +10,7 @@ class BoxesController extends Controller
 {
     public function index()
     {
-        $data = DB::table('boxes')->get();
+        $data = Box::all();
         return view('maintenance/boxes', ['data' => json_encode($data)]);
     }
 
@@ -28,6 +28,13 @@ class BoxesController extends Controller
 
         $request->session()->flash('alert-success', 'Box Identifier created succesfully');
         return redirect('/boxes');
+
+    }
+
+    public function remove_records(Request $request){
+
+        $table_idx = $_POST['table_idx'];
+        Box::destroy($table_idx);
 
     }
 }

@@ -10,7 +10,7 @@ class LocationsController extends Controller
 {
     public function index()
     {
-        $data = DB::table('locations')->get();
+        $data = Location::all();
         return view('maintenance/locations', ['data' => json_encode($data)]);
     }
 
@@ -28,6 +28,13 @@ class LocationsController extends Controller
 
         $request->session()->flash('alert-success', 'Location created succesfully');
         return redirect('/locations');
+
+    }
+
+    public function remove_records(Request $request){
+
+        $table_idx = $_POST['table_idx'];
+        Location::destroy($table_idx);
 
     }
 }

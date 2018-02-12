@@ -10,7 +10,7 @@ class ArchivesController extends Controller
 {
     public function index()
     {
-        $data = DB::table('archives')->get();
+        $data = Archive::all();
         return view('maintenance/archives', ['data' => json_encode($data)]);
     }
 
@@ -28,6 +28,13 @@ class ArchivesController extends Controller
 
         $request->session()->flash('alert-success', 'Archive created succesfully');
         return redirect('/archives');
+
+    }
+
+    public function remove_records(Request $request){
+
+        $table_idx = $_POST['table_idx'];
+        Archive::destroy($table_idx);
 
     }
 }

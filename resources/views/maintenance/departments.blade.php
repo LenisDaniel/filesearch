@@ -76,6 +76,13 @@
     </div>
     <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script>
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
         $(document).ready(function(){
 
             response = {!! $data !!};
@@ -89,9 +96,17 @@
                     return row.id;
                 });
 
-                $('#department_list').bootstrapTable('remove', {
-                    field: 'id',
-                    values: ids
+                $.ajax({
+                    url: '{{ route('remove_departments_records') }}',
+                    method: 'POST',
+                    data: {'table_idx': ids, '_token': '{{ csrf_token() }}'},
+
+                    success: function(response){
+                        $('#department_list').bootstrapTable('remove', {
+                            field: 'id',
+                            values: ids
+                        });
+                    }
                 });
             })
 

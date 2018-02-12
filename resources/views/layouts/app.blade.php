@@ -45,9 +45,8 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                         Maintenance <span class="caret"></span>
                                     </a>
-
                                     <ul class="dropdown-menu" role="menu">
-                                        <li><a href="{{ route('departments') }}">Manage Department</a></li>
+                                        {{--<li><a href="{{ route('departments') }}">Manage Department</a></li>--}}
                                         <li><a href="{{ route('cities') }}">Manage Cities</a></li>
                                         <li><a href="{{ route('locations') }}">Manage Locations</a></li>
                                         <li><a href="{{ route('archives') }}">Manage Archives</a></li>

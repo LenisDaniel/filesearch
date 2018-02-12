@@ -10,10 +10,9 @@ class DepartmentsController extends Controller
 {
     public function index()
     {
-
-        $data = DB::table('departments')->get();
-        return view('maintenance/departments', ['data' => json_encode($data)]);
-        //return view('maintenance/departments');
+        //$data = Department::all();
+        //return view('maintenance/departments', ['data' => json_encode($data)]);
+        return redirect('/home');
     }
 
     public function create()
@@ -38,10 +37,16 @@ class DepartmentsController extends Controller
 
     }
 
+    public function remove_records(Request $request){
+
+        $table_idx = $_POST['table_idx'];
+        Department::destroy($table_idx);
+
+    }
+
     public function show(Request $request)
     {
-//        $eidentifier = Eidentifier::find($request->input('id'));
-//        return response()->json(['response' => $eidentifier->name]);
+
     }
 
 
@@ -52,23 +57,14 @@ class DepartmentsController extends Controller
 
     public function update(Request $request, $id)
     {
-//        $this->validate($request, [
-//            'name' => 'required|min:5'
-//        ]);
-//
-//        $eidentifier = Eidentifier::find($id);
-//        $eidentifier->update($request->all());
-//        $request->session()->flash('alert-success', 'Email name was succesful updated');
-//        return redirect('/email_structure');
+
 
     }
 
     public function destroy(Request $request, $id)
     {
 
-//        Eidentifier::find($id)->delete();
-//        $request->session()->flash('alert-success', 'Email name was succesful deleted');
-//        return redirect('/email_structure');
+
 
     }
 }

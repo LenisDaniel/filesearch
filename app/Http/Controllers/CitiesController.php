@@ -10,7 +10,7 @@ class CitiesController extends Controller
 {
     public function index()
     {
-        $data = DB::table('cities')->get();
+        $data = City::all();
         return view('maintenance/cities', ['data' => json_encode($data)]);
     }
 
@@ -28,6 +28,13 @@ class CitiesController extends Controller
 
         $request->session()->flash('alert-success', 'City created succesfully');
         return redirect('/cities');
+
+    }
+
+    public function remove_records(Request $request){
+
+        $table_idx = $_POST['table_idx'];
+        City::destroy($table_idx);
 
     }
 
