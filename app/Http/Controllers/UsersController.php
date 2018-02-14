@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Department;
 
 class UsersController extends Controller
 {
@@ -11,7 +12,8 @@ class UsersController extends Controller
     public function index()
     {
         $data = User::all();
-        return view('maintenance/users', ['data' => json_encode($data), 'process' => 0]);
+        $departments = Department::all();
+        return view('maintenance/users', ['data' => json_encode($data), 'departments' => $departments, 'process' => 0]);
     }
 
 
@@ -37,7 +39,11 @@ class UsersController extends Controller
     {
         $data = User::all();
         $user_data = User::find($id);
-        return view('maintenance/users', ['data' => json_encode($data), 'user_data' => $user_data, 'process' => 1]);
+        //$dep_id = Department::find($user_data->department_id);
+
+        $departments = Department::all();
+
+        return view('maintenance/users', ['data' => json_encode($data), 'user_data' => $user_data, 'departments' => $departments, 'process' => 1]);
     }
 
     public function edit($id)

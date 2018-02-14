@@ -39,6 +39,25 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('department_id') ? ' has-error' : '' }}">
+                            <label for="department_id" class="col-md-4 control-label">Department</label>
+
+                            <div class="col-md-6">
+                                <select class="form-control" name="department_id">
+                                    <option>Select One Category</option>
+                                    @foreach($departments as $department)
+                                        <option value="{{$department->id}}">{{$department->department_name}}</option>
+                                    @endforeach
+                                </select>
+
+                                @if ($errors->has('department_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('department_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 

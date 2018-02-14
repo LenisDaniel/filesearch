@@ -6,26 +6,25 @@ use Illuminate\Http\Request;
 use App\City;
 use App\Department;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class CitiesController extends Controller
 {
     public function index()
     {
-        $departments = Department::all();
-        $data = City::all();
-        return view('maintenance/cities', ['data' => json_encode($data), 'departments' => $departments]);
+        $data = DB::table('cities')->where('department_id', Auth::user()->department_id)->get();
+        return view('maintenance/cities', ['data' => json_encode($data)]);
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
             'city_name' => 'required|min:5',
-            'department_id' => 'required|not_in:Select One Category',
         ]);
 
         $cities = new City();
         $cities->city_name = $request->city_name;
-        $cities->department_id = $request->department_id;
+        $cities->department_id = Auth::user()->department_id;
         $cities->remember_token = $request->_token;
         $cities->save();
 

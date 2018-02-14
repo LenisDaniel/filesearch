@@ -38,34 +38,58 @@
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                    <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
-                                <div class="col-md-6">
-                                    @if($process == 1)
-                                        <input id="email" type="email" class="form-control" name="email" value="{{ $user_data->email }}" required>
-                                    @else
-                                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-                                    @endif
+                                    <div class="col-md-6">
+                                        @if($process == 1)
+                                            <input id="email" type="email" class="form-control" name="email" value="{{ $user_data->email }}" required>
+                                        @else
+                                            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                        @endif
 
 
-                                    @if ($errors->has('email'))
-                                        <span class="help-block">
+                                        @if ($errors->has('email'))
+                                            <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
-                                    @endif
+                                        @endif
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="checkbox">
-                                <label class="col-md-4 control-label">
-                                    @if($process == 1 && $user_data->is_admin == 1)
-                                        <input type="checkbox" id="is_admin" checked name="is_admin"> Is Admin?
-                                    @else
-                                        <input type="checkbox" id="is_admin" name="is_admin"> Is Admin?
-                                    @endif
-                                </label>
-                            </div>
+                                <div class="form-group{{ $errors->has('department_id') ? ' has-error' : '' }}">
+                                    <label for="department_id" class="col-md-4 control-label">Department</label>
+
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="department_id">
+                                            <option>Select One Category</option>
+                                            @foreach($departments as $department)
+                                                @if($department->id == $user_data->department_id)
+                                                    @php ($selected = "selected")
+                                                @else
+                                                    @php ($selected = "")
+                                                @endif
+                                                <option value="{{$department->id}}" {{ $selected }}>{{$department->department_name}}</option>
+                                            @endforeach
+                                        </select>
+
+                                        @if ($errors->has('department_id'))
+                                            <span class="help-block">
+                                        <strong>{{ $errors->first('department_id') }}</strong>
+                                    </span>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="checkbox">
+                                    <label class="col-md-4 control-label">
+                                        @if($process == 1 && $user_data->is_admin == 1)
+                                            <input type="checkbox" id="is_admin" checked name="is_admin"> Is Admin?
+                                        @else
+                                            <input type="checkbox" id="is_admin" name="is_admin"> Is Admin?
+                                        @endif
+                                    </label>
+                                </div>
                             <br/>
 
                             <div class="form-group">

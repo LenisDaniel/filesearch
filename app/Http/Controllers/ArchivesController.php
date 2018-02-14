@@ -4,28 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Archive;
-use App\Department;
+
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ArchivesController extends Controller
 {
     public function index()
     {
-        $departments = Department::all();
-        $data = Archive::all();
-        return view('maintenance/archives', ['data' => json_encode($data), 'departments' => $departments]);
+        $data = DB::table('archives')->where('department_id', Auth::user()->department_id)->get();
+        return view('maintenance/archives', ['data' => json_encode($data)]);
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
             'archive_identifier' => 'required|min:1',
-            'department_id' => 'required|not_in:Select One Category'
         ]);
 
         $archives = new Archive();
         $archives->archive_identifier = $request->archive_identifier;
-        $archives->department_id = $request->department_id;
+        $archives->department_id = Auth::user()->department_id;
+
         $archives->remember_token = $request->_token;
         $archives->save();
 
