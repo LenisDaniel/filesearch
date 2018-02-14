@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Edit Users <a href="{{route('register')}}"><button type="button" class="btn btn-success pull-right" style="margin-top: -7px" id="remove">Create Users</button></a></div>
+                    <div class="panel-heading">Edit Users (Select an user first) <a href="{{route('register')}}"><button type="button" class="btn btn-success pull-right" style="margin-top: -7px" id="remove">Create Users</button></a></div>
 
                     <div class="panel-body">
                         <div class="flash-message">
@@ -63,14 +63,20 @@
                                     <div class="col-md-6">
                                         <select class="form-control" name="department_id">
                                             <option>Select One Category</option>
-                                            @foreach($departments as $department)
-                                                @if($department->id == $user_data->department_id)
-                                                    @php ($selected = "selected")
-                                                @else
-                                                    @php ($selected = "")
-                                                @endif
-                                                <option value="{{$department->id}}" {{ $selected }}>{{$department->department_name}}</option>
-                                            @endforeach
+                                            @if($process == 1)
+                                                @foreach($departments as $department)
+                                                    @if($department->id == $user_data->department_id)
+                                                        @php ($selected = "selected")
+                                                    @else
+                                                        @php ($selected = "")
+                                                    @endif
+                                                    <option value="{{$department->id}}" {{ $selected }}>{{$department->department_name}}</option>
+                                                @endforeach
+                                            @else
+                                                @foreach($departments as $department)
+                                                    <option value="{{$department->id}}">{{$department->department_name}}</option>
+                                                @endforeach
+                                            @endif
                                         </select>
 
                                         @if ($errors->has('department_id'))

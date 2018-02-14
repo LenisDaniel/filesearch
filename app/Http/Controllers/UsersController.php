@@ -39,8 +39,6 @@ class UsersController extends Controller
     {
         $data = User::all();
         $user_data = User::find($id);
-        //$dep_id = Department::find($user_data->department_id);
-
         $departments = Department::all();
 
         return view('maintenance/users', ['data' => json_encode($data), 'user_data' => $user_data, 'departments' => $departments, 'process' => 1]);
