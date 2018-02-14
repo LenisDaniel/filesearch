@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Edit Users</div>
+                    <div class="panel-heading">Edit Users <a href="{{route('register')}}"><button type="button" class="btn btn-success pull-right" style="margin-top: -7px" id="remove">Create Users</button></a></div>
 
                     <div class="panel-body">
                         <div class="flash-message">
