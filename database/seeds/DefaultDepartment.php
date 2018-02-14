@@ -13,7 +13,7 @@ class DefaultDepartment extends Seeder
     public function run()
     {
         Department::create([
-            'department_name' => $name['category_name'],
+            'department_name' => 'Educación Especial',
             'remember_token' => str_random(40),
         ]);
     }
