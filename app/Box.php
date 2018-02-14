@@ -12,6 +12,7 @@ class Box extends Model
 
     protected $fillable = [
         'box_identifier',
+        'department_id',
         '_token',
     ];
 

@@ -16,6 +16,7 @@ class Boxes extends Migration
         Schema::create('boxes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('box_identifier');
+            $table->integer('department_id')->unsigned();
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

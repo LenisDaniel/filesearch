@@ -12,6 +12,7 @@ class City extends Model
 
     protected $fillable = [
         'city_name',
+        'department_id',
         '_token',
     ];
 

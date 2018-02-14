@@ -12,6 +12,7 @@ class Archive extends Model
 
     protected $fillable = [
         'archive_identifier',
+        'department_id',
         '_token',
     ];
 

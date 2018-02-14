@@ -16,6 +16,7 @@ class Archive extends Migration
         Schema::create('archives', function (Blueprint $table) {
             $table->increments('id');
             $table->string('archive_identifier');
+            $table->integer('department_id')->unsigned();
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

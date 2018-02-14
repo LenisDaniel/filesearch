@@ -12,6 +12,7 @@ class Location extends Model
 
     protected $fillable = [
         'location_name',
+        'department_id',
         '_token',
     ];
 

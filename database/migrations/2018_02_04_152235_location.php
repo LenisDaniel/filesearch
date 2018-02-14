@@ -16,6 +16,7 @@ class Location extends Migration
         Schema::create('locations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('location_name');
+            $table->integer('department_id')->unsigned();
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

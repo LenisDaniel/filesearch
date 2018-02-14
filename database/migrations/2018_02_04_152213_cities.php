@@ -16,6 +16,7 @@ class Cities extends Migration
         Schema::create('cities', function (Blueprint $table) {
             $table->increments('id');
             $table->string('city_name');
+            $table->integer('department_id')->unsigned();
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
