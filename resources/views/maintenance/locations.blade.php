@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Manage Locations</div>
+                    <div class="panel-heading"><i aria-hidden="true" class="fa fa-chevron-circle-right"></i> Manage Locations</div>
 
                     <div class="panel-body">
                         <div class="flash-message">
@@ -54,11 +54,11 @@
                             <div class="form-group">
                                 <div class="col-md-8 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
-                                        Create
+                                        <i class="fa fa-plus" aria-hidden="true"></i> Create
                                     </button>
                                     <a href="{{route('home')}}">
                                         <button type="button" class="btn btn-danger">
-                                            Cancel
+                                            <i class="fa fa-ban" aria-hidden="true"></i> Cancel
                                         </button>
                                     </a>
                                 </div>
@@ -75,7 +75,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Locations List <button type="button" class="btn btn-danger pull-right" style="margin-top: -7px" id="remove">Remove</button></div>
+                    <div class="panel-heading"><i class="fa fa-list" aria-hidden="true"></i> Locations List <button type="button" class="btn btn-danger pull-right" style="margin-top: -7px" id="remove"><i class="fa fa-trash-o" aria-hidden="true"></i> Remove</button></div>
                     <div class="panel-body">
                         <table data-toggle="table" id="locations_list" data-search="true" data-pagination="true" data-sort-order="desc">
                             <thead>

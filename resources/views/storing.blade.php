@@ -6,9 +6,9 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     @if($process == 1)
-                        <div class="panel-heading">Update Record</div>
+                        <div class="panel-heading"><i class="fa fa-pencil" aria-hidden="true"></i> Update Record</div>
                     @else
-                        <div class="panel-heading">Store Records</div>
+                        <div class="panel-heading"><i class="fa fa-floppy-o" aria-hidden="true"></i> Store Records</div>
                     @endif
 
                     <div class="panel-body">
@@ -175,14 +175,14 @@
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
                                         @if($process == 1)
-                                            Update
+                                            <i class="fa fa-pencil" aria-hidden="true"></i> Update
                                         @else
-                                            Save
+                                            <i class="fa fa-floppy-o" aria-hidden="true"></i> Save
                                         @endif
                                     </button>
                                     <a href="{{route('home')}}">
                                         <button type="button" class="btn btn-danger">
-                                            Cancel
+                                            <i class="fa fa-ban" aria-hidden="true"></i> Cancel
                                         </button>
                                     </a>
                                 </div>

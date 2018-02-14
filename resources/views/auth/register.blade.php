@@ -89,11 +89,11 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Register
+                                    <i class="fa fa-floppy-o" aria-hidden="true"></i> Register
                                 </button>
                                 <a href="{{route('home')}}">
                                     <button type="button" class="btn btn-danger">
-                                        Cancel
+                                        <i class="fa fa-ban" aria-hidden="true"></i> Cancel
                                     </button>
                                 </a>
                             </div>

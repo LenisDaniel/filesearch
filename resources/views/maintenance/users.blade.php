@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Edit Users (Select an user first) <a href="{{route('register')}}"><button type="button" class="btn btn-success pull-right" style="margin-top: -7px" id="remove">Create Users</button></a></div>
+                    <div class="panel-heading"><i class="fa fa-edit" aria-hidden="true"></i> Edit Users (Select an user first) <a href="{{route('register')}}"><button type="button" class="btn btn-success pull-right" style="margin-top: -7px" id="remove"><i class="fa fa-user-plus" aria-hidden="true"></i> Create Users</button></a></div>
 
                     <div class="panel-body">
                         <div class="flash-message">
@@ -101,11 +101,11 @@
                             <div class="form-group">
                                 <div class="col-md-8 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
-                                        Edit User
+                                        <i class="fa fa-edit" aria-hidden="true"></i> Edit User
                                     </button>
                                     <a href="{{route('home')}}">
                                         <button type="button" class="btn btn-danger">
-                                            Cancel
+                                            <i class="fa fa-ban" aria-hidden="true"></i> Cancel
                                         </button>
                                     </a>
                                 </div>
@@ -123,7 +123,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">User List <button type="button" class="btn btn-danger pull-right" style="margin-top: -7px" id="remove">Remove</button></div>
+                    <div class="panel-heading"><i class="fa fa-list" aria-hidden="true"></i> User List <button type="button" class="btn btn-danger pull-right" style="margin-top: -7px" id="remove"><i class="fa fa-trash-o" aria-hidden="true"></i> Remove</button></div>
                     <div class="panel-body">
                         <table data-toggle="table" id="users_list" data-search="true" data-pagination="true" data-sort-order="desc">
                             <thead>

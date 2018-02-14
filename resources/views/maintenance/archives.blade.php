@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Manage Archives</div>
+                    <div class="panel-heading"><i aria-hidden="true" class="fa fa-chevron-circle-right"></i> Manage Archives</div>
 
                     <div class="panel-body">
                         <div class="flash-message">
@@ -53,11 +53,11 @@
                             <div class="form-group">
                                 <div class="col-md-8 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
-                                        Create
+                                        <i aria-hidden="true" class="fa fa-plus"></i> Create
                                     </button>
                                     <a href="{{route('home')}}">
                                         <button type="button" class="btn btn-danger">
-                                            Cancel
+                                            <i aria-hidden="true" class="fa fa-ban"></i> Cancel
                                         </button>
                                     </a>
                                 </div>
@@ -74,7 +74,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Archives List <button type="button" class="btn btn-danger pull-right" style="margin-top: -7px" id="remove">Remove</button></div>
+                    <div class="panel-heading"><i aria-hidden="true" class="fa fa-list"></i> Archives List <button type="button" class="btn btn-danger pull-right" style="margin-top: -7px" id="remove"><i aria-hidden="true" class="fa fa-trash-o"></i> Remove</button></div>
                     <div class="panel-body">
                         <table data-toggle="table" id="archives_list" data-search="true" data-pagination="true" data-sort-order="desc">
                             <thead>
