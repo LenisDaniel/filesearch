@@ -46,6 +46,7 @@ Route::post('/storing_update/{id}', 'StoringsController@update')->name('storing_
 
 Route::get('/users', 'UsersController@index')->name('users');
 Route::get('/users_edit/{id}', 'UsersController@show')->name('users_edit');
+Route::post('/users_update/{id}', 'UsersController@update')->name('users_update');
 
 //Ajax
 Route::post('/remove_departments_records', 'DepartmentsController@remove_records')->name('remove_departments_records');

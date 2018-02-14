@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Manage Users</div>
+                    <div class="panel-heading">Edit Users</div>
 
                     <div class="panel-body">
                         <div class="flash-message">
@@ -15,12 +15,14 @@
                                 @endif
                             @endforeach
                         </div>
-                        <form class="form-horizontal" method="POST" action="{{ route('locations_insert') }}">
+                        @if($process == 1)
+                            <form class="form-horizontal" method="POST" action="{{ route('users_update', ['id' => $user_data->id]) }}">
+                        @else
+                            <form class="form-horizontal" method="POST" action="{{ route('users_update', ['id' => 0]) }}">
+                        @endif
                             {{ csrf_field() }}
-
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name" class="col-md-4 control-label">Name</label>
-
                                 <div class="col-md-6">
                                     @if($process == 1)
                                         <input id="name" type="text" class="form-control" name="name" value="{{ $user_data->name }}" required autofocus>
@@ -90,7 +92,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Locations List <button type="button" class="btn btn-danger pull-right" style="margin-top: -7px" id="remove">Remove</button></div>
+                    <div class="panel-heading">User List <button type="button" class="btn btn-danger pull-right" style="margin-top: -7px" id="remove">Remove</button></div>
                     <div class="panel-body">
                         <table data-toggle="table" id="users_list" data-search="true" data-pagination="true" data-sort-order="desc">
                             <thead>
