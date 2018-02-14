@@ -44,9 +44,13 @@ Route::get('/storing', 'StoringsController@index')->name('storing');
 Route::get('/storing_edit/{id}', 'StoringsController@show')->name('storing_edit');
 Route::post('/storing_update/{id}', 'StoringsController@update')->name('storing_update');
 
+Route::get('/users', 'UsersController@index')->name('users');
+Route::get('/users_edit/{id}', 'UsersController@show')->name('users_edit');
+
 //Ajax
 Route::post('/remove_departments_records', 'DepartmentsController@remove_records')->name('remove_departments_records');
 Route::post('/remove_locations_records', 'LocationsController@remove_records')->name('remove_locations_records');
 Route::post('/remove_archives_records', 'ArchivesController@remove_records')->name('remove_archives_records');
 Route::post('/remove_boxes_records', 'BoxesController@remove_records')->name('remove_boxes_records');
 Route::post('/remove_cities_records', 'CitiesController@remove_records')->name('remove_cities_records');
+Route::post('/remove_users_records', 'UsersController@remove_records')->name('remove_users_records');

@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Manage Locations</div>
+                    <div class="panel-heading">Manage Users</div>
 
                     <div class="panel-body">
                         <div class="flash-message">
@@ -18,22 +18,58 @@
                         <form class="form-horizontal" method="POST" action="{{ route('locations_insert') }}">
                             {{ csrf_field() }}
 
-                            <div class="form-group{{ $errors->has('location_name') ? ' has-error' : '' }}">
-                                <label for="location_name" class="col-md-4 control-label">Location Name</label>
+                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                <label for="name" class="col-md-4 control-label">Name</label>
+
                                 <div class="col-md-6">
-                                    <input id="location_name" type="text" class="form-control" name="location_name" value="{{ old('location_name') }}" required autofocus>
-                                    @if ($errors->has('location_name'))
+                                    @if($process == 1)
+                                        <input id="name" type="text" class="form-control" name="name" value="{{ $user_data->name }}" required autofocus>
+                                    @else
+                                        <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                    @endif
+
+                                    @if ($errors->has('name'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('location_name') }}</strong>
+                                        <strong>{{ $errors->first('name') }}</strong>
                                     </span>
                                     @endif
                                 </div>
                             </div>
 
+                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+
+                                <div class="col-md-6">
+                                    @if($process == 1)
+                                        <input id="email" type="email" class="form-control" name="email" value="{{ $user_data->email }}" required>
+                                    @else
+                                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                    @endif
+
+
+                                    @if ($errors->has('email'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="checkbox">
+                                <label class="col-md-4 control-label">
+                                    @if($process == 1 && $user_data->is_admin == 1)
+                                        <input type="checkbox" id="is_admin" checked name="is_admin"> Is Admin?
+                                    @else
+                                        <input type="checkbox" id="is_admin" name="is_admin"> Is Admin?
+                                    @endif
+                                </label>
+                            </div>
+                            <br/>
+
                             <div class="form-group">
                                 <div class="col-md-8 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
-                                        Create
+                                        Edit User
                                     </button>
                                     <a href="{{route('home')}}">
                                         <button type="button" class="btn btn-danger">
@@ -56,12 +92,14 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Locations List <button type="button" class="btn btn-danger pull-right" style="margin-top: -7px" id="remove">Remove</button></div>
                     <div class="panel-body">
-                        <table data-toggle="table" id="locations_list" data-search="true" data-pagination="true" data-sort-order="desc">
+                        <table data-toggle="table" id="users_list" data-search="true" data-pagination="true" data-sort-order="desc">
                             <thead>
                             <tr>
                                 <th data-field="state" data-checkbox="true" >Item ID</th>
-                                <th data-field="id" data-sortable="true">Location ID</th>
-                                <th data-field="location_name"  data-sortable="true">Location Name</th>
+                                <th data-field="id" data-sortable="true" >User ID</th>
+                                <th data-field="name" data-sortable="true">User Name</th>
+                                <th data-field="email" data-sortable="true">User Email</th>
+                                <th data-field="is_admin"  data-sortable="true">Is Admin?</th>
                                 <th data-field="created_at" data-sortable="true">Created Date</th>
                             </tr>
                             </thead>
@@ -86,23 +124,35 @@
         $(document).ready(function(){
 
             response = {!! $data !!};
+            var $table = $('#users_list');
 
-            $('#locations_list').bootstrapTable({
+            $table.bootstrapTable({
                 data: response,
             });
 
+            $(function () {
+                $table.on('click-row.bs.table', function (e, row, $element) {
+                    record_id = row.id;
+
+                    var url_dir = "{{ route('users_edit', ':id') }}";
+                    url_dir = url_dir.replace(':id', record_id);
+                    location.replace(url_dir);
+
+                });
+            });
+
             $('#remove').click(function(){
-                var ids = $.map($('#locations_list').bootstrapTable('getSelections'), function (row) {
+                var ids = $.map($table.bootstrapTable('getSelections'), function (row) {
                     return row.id;
                 });
 
                 $.ajax({
-                    url: '{{ route('remove_locations_records') }}',
+                    url: '{{ route('remove_users_records') }}',
                     method: 'POST',
                     data: {'table_idx': ids, '_token': '{{ csrf_token() }}'},
 
                     success: function(response){
-                        $('#locations_list').bootstrapTable('remove', {
+                        $table.bootstrapTable('remove', {
                             field: 'id',
                             values: ids
                         });

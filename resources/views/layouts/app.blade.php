@@ -51,6 +51,7 @@
                                         <li><a href="{{ route('locations') }}">Manage Locations</a></li>
                                         <li><a href="{{ route('archives') }}">Manage Archives</a></li>
                                         <li><a href="{{ route('boxes') }}">Manage Boxes</a></li>
+                                        <li><a href="{{ route('users') }}">Manage Users</a></li>
                                     </ul>
 
                                 </li>

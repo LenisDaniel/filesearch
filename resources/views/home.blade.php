@@ -47,7 +47,6 @@
 
             });
 
-
             var $table = $('#record_list');
             $(function () {
                 $table.on('click-row.bs.table', function (e, row, $element) {
