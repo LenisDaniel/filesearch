@@ -37,7 +37,7 @@ class ArchivesController extends Controller
     public function remove_records(Request $request){
 
         $table_idx = $_POST['table_idx'];
-        Archive::destroy($table_idx);
+        DB::table('archives')->whereIn('id', $table_idx)->delete();
 
     }
 }

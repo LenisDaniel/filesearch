@@ -37,7 +37,7 @@ class BoxesController extends Controller
     public function remove_records(Request $request){
 
         $table_idx = $_POST['table_idx'];
-        Box::destroy($table_idx);
+        DB::table('boxes')->whereIn('id', $table_idx)->delete();
 
     }
 }

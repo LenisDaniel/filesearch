@@ -40,7 +40,7 @@ class DepartmentsController extends Controller
     public function remove_records(Request $request){
 
         $table_idx = $_POST['table_idx'];
-        Department::destroy($table_idx);
+        DB::table('departments')->whereIn('id', $table_idx)->delete();
 
     }
 

@@ -36,7 +36,7 @@ class LocationsController extends Controller
     public function remove_records(Request $request){
 
         $table_idx = $_POST['table_idx'];
-        Location::destroy($table_idx);
+        DB::table('locations')->whereIn('id', $table_idx)->delete();
 
     }
 }

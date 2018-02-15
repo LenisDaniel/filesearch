@@ -33,10 +33,12 @@ class CitiesController extends Controller
 
     }
 
-    public function remove_records(Request $request){
+    public function remove_records(Request $request)
+    {
 
         $table_idx = $_POST['table_idx'];
-        City::destroy($table_idx);
+        DB::table('cities')->whereIn('id', $table_idx)->delete();
+
 
     }
 
