@@ -16,7 +16,7 @@
                         <table data-toggle="table" id="record_list" data-search="true" data-pagination="true" data-sort-order="desc">
                             <thead>
                             <tr>
-                                <th data-field="id" data-sortable="true" >ID</th>
+                                <th data-field="state" data-checkbox="true" >ID</th>
                                 <th data-field="case_number" data-sortable="true" >Número de registro</th>
                                 <th data-field="department_name" data-sortable="true">Departamento</th>
                                 <th data-field="city_name"  data-sortable="true">Pueblo</th>

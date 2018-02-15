@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-edit" aria-hidden="true"></i> Edit Users (Select an user first) <a href="{{route('register')}}"><button type="button" class="btn btn-success pull-right" style="margin-top: -7px" id="remove"><i class="fa fa-user-plus" aria-hidden="true"></i> Create Users</button></a></div>
+                    <div class="panel-heading"><i class="fa fa-edit" aria-hidden="true"></i> Edit Users (Select an user first) <a href="{{route('register')}}"><button type="button" class="btn btn-success pull-right" style="margin-top: -7px" id="create_u"><i class="fa fa-user-plus" aria-hidden="true"></i> Create Users</button></a></div>
 
                     <div class="panel-body">
                         <div class="flash-message">
@@ -112,6 +112,7 @@
 
                             </div>
                         </form>
+                            </form>
                     </div>
 
                 </div>
@@ -175,9 +176,12 @@
             });
 
             $('#remove').click(function(){
+
                 var ids = $.map($table.bootstrapTable('getSelections'), function (row) {
                     return row.id;
                 });
+
+
 
                 $.ajax({
                     url: '{{ route('remove_users_records') }}',
@@ -186,12 +190,12 @@
 
                     success: function(response){
                         $table.bootstrapTable('remove', {
-                            field: 'id',
-                            values: ids
+                        field: 'id',
+                        values: ids
                         });
                     }
                 });
-            })
+            });
 
         });
     </script>
