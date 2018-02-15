@@ -31,7 +31,7 @@ class UsersController extends Controller
     public function remove_records(Request $request){
 
         $table_idx = $_POST['table_idx'];
-        User::destroy($table_idx);
+        DB::table('users')->whereIn('id', $table_idx)->delete();
 
     }
 
