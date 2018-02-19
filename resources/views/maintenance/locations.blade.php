@@ -81,7 +81,7 @@
                             <thead>
                             <tr>
                                 <th data-field="state" data-checkbox="true" >Item ID</th>
-                                <th data-field="id" data-sortable="true">Location ID</th>
+                                {{--<th data-field="id" data-sortable="true">Location ID</th>--}}
                                 <th data-field="location_name"  data-sortable="true">Location Name</th>
                                 <th data-field="created_at" data-sortable="true">Created Date</th>
                             </tr>

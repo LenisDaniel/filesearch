@@ -60,7 +60,7 @@
                             <thead>
                             <tr>
                                 <th data-field="state" data-checkbox="true" >Item ID</th>
-                                <th data-field="id" data-sortable="true">Department ID</th>
+                                {{--<th data-field="id" data-sortable="true">Department ID</th>--}}
                                 <th data-field="department_name"  data-sortable="true">Department Name</th>
                                 <th data-field="created_at" data-sortable="true">Created Date</th>
                             </tr>

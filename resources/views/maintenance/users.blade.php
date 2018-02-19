@@ -130,7 +130,7 @@
                             <thead>
                             <tr>
                                 <th data-field="state" data-checkbox="true" >Item ID</th>
-                                <th data-field="id" data-sortable="true" >User ID</th>
+                                {{--<th data-field="id" data-sortable="true" >User ID</th>--}}
                                 <th data-field="name" data-sortable="true">User Name</th>
                                 <th data-field="email" data-sortable="true">User Email</th>
                                 <th data-field="is_admin"  data-sortable="true">Is Admin?</th>

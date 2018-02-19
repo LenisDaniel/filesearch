@@ -80,7 +80,7 @@
                             <thead>
                             <tr>
                                 <th data-field="state" data-checkbox="true" >Item ID</th>
-                                <th data-field="id" data-sortable="true">Archive ID</th>
+                                {{--<th data-field="id" data-sortable="true">Archive ID</th>--}}
                                 <th data-field="archive_identifier"  data-sortable="true">Archive Identifier</th>
                                 <th data-field="created_at" data-sortable="true">Created Date</th>
                             </tr>

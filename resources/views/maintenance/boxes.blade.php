@@ -81,7 +81,7 @@
                             <thead>
                             <tr>
                                 <th data-field="state" data-checkbox="true" >Item ID</th>
-                                <th data-field="id" data-sortable="true">Box ID</th>
+                                {{--<th data-field="id" data-sortable="true">Box ID</th>--}}
                                 <th data-field="box_identifier"  data-sortable="true">Box Identifier</th>
                                 <th data-field="created_at" data-sortable="true">Created Date</th>
                             </tr>
