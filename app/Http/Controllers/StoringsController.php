@@ -70,7 +70,7 @@ class StoringsController extends Controller
 
     public function update(Request $request, $id)
     {
-
+        $out = (isset($request['out'])) ? 1 : 0;
         $this->validate($request, [
             'case_number' => 'required|min:5',
             'department_id' => 'required|not_in:Select One Category',
@@ -87,6 +87,8 @@ class StoringsController extends Controller
         $storings->location_id = $request->location_id;
         $storings->archive_id = $request->archive_id;
         $storings->box_id = $request->box_id;
+        $storings->out = $out;
+        $storings->comments = $request->comments;
         $storings->remember_token = $request->_token;
         $storings->save();
 

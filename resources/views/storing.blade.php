@@ -148,9 +148,8 @@
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('box_id') ? ' has-error' : '' }}">
+                            <div class="form-group {{ $errors->has('box_id') ? ' has-error' : '' }}">
                                 <label for="box_id" class="col-md-4 control-label">Box</label>
-
                                 <div class="col-md-6">
                                     <select class="form-control" name="box_id">
                                         <option>Select One Category</option>
@@ -171,6 +170,33 @@
                                     @endif
                                 </div>
                             </div>
+                            <div class="form-group {{ $errors->has('comments') ? ' has-error' : '' }}">
+                                <label for="comments" class="col-md-4 control-label">Comments</label>
+                                <div class="col-md-6">
+                                    <div>
+                                        @if($process == 1)
+                                            <textarea class="form-control" id="comments" name="comments" rows="5">{{ $data->comments }}</textarea>
+                                        @else
+                                            <textarea class="form-control" id="comments" name="comments" rows="5">{{ old('comments') }}</textarea>
+                                        @endif
+                                    </div>
+                                    @if ($errors->has('comments'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('comments') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="checkbox">
+                                <label class="col-md-4 control-label">
+                                    @if($process == 1 && $data->out == 1)
+                                        <input type="checkbox" id="out" name="out" checked> Está fuera?
+                                    @else
+                                        <input type="checkbox" id="out" name="out"> Está fuera?
+                                    @endif
+                                </label>
+                            </div>
+                            <br/>
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
@@ -187,7 +213,6 @@
                                     </a>
                                 </div>
                             </div>
-
                         </form>
                     </div>
                 </div>
