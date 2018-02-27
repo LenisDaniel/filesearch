@@ -73,7 +73,7 @@ class StoringsController extends Controller
         $out = (isset($request['out'])) ? 1 : 0;
         $this->validate($request, [
             'case_number' => 'required|min:5',
-            'department_id' => 'required|not_in:Select One Category',
+            'department_id' => 'required|not_in:Select One',
             'city_id' => 'required|not_in:Select One Category',
             'location_id' => 'required|not_in:Select One Category',
             'archive_id' => 'required|not_in:Select One Category',

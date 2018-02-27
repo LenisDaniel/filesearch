@@ -60,7 +60,6 @@
                     }else{
                         return {
                             classes: 'text-nowrap',
-
                         };
                     }
                 }
